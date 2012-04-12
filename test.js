@@ -15,7 +15,6 @@ Timer.update = function() {
 		x = mousex;
 		y = mousey;
 	}
-
 	x += randfunc();
 	y += randfunc();
 }
