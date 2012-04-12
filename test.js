@@ -48,7 +48,7 @@ Timer.run = function() {
 	document.onmousemove = updatemouseloc;
 	document.onmousedown = setclicked;
 	Timer.update();
-	ctx.fillStyle="#1589FF";
+	ctx.fillStyle="#FFFFFF";
 	ctx.fillRect(0,0,500,500);
 	ctx.drawImage(document.getElementById("flag"),x,y);
 };
