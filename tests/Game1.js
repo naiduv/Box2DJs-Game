@@ -51,7 +51,8 @@ Timer.run = function() {
 	Timer.update();
 	ctx.fillStyle="#FFFFFF";
 	ctx.fillRect(0,0,500,500);
-	ctx.drawImage(document.getElementById("flag"),x,y);
+	ctx.drawImage(document.getElementById("s1"),x,y);
+
 };
 
 //timer interval is 10ms

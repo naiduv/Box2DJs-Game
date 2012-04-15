@@ -1,0 +1,25 @@
+{
+    "name": "MongoApp.Main",
+    "json": {
+        "enabledEmails": {
+            "@Mongo.Find(users)": {
+                "conditions": {
+                    "enabled": true 
+                }
+            },
+            "@each": {
+                "@get(CurrentItem.email)": null
+            }
+        },
+        "disabledEmails": {
+            "@Mongo.Find(users)": {
+                "conditions": {
+                    "enabled": false
+                }
+            },
+            "@each": {
+                "@get(CurrentItem.email)": null
+            }
+        }
+    }
+}

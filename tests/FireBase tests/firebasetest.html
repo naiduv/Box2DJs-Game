@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <title>Venkats Game</title>
+    <div> move your star around </div>
+    </style>
+    <script type='text/javascript' src='http://static.firebase.com/demo/firebase.js'></script>    
+    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+    <script type="text/javascript">
+
+    clicked = false;
+
+      drawStar = function(ix,iy){
+        ctx.beginPath();
+        ctx.moveTo(ix, iy);
+        ctx.lineTo(ix+15,iy+0);
+        ctx.lineTo(ix+15, iy+15);
+        ctx.lineTo(ix+0, iy+15);
+        ctx.closePath();
+        ctx.fill();
+      }
+  
+      var myDataRef = new Firebase('http://demo.firebase.com/Venkat63679629');
+
+      window.onload = function() {
+        c = document.getElementById("myCanvas");
+        ctx = c.getContext("2d");
+      }
+      
+      //firebase
+      myDataRef.on('child_added', function(snapshot) {
+        var newloc = snapshot.val();
+        drawStar(newloc.x, newloc.y);
+      });
+
+      update = function(e) {
+        if(clicked) {
+          drawStar(e.pageX,e.pageY);
+           myDataRef.push({x: e.pageX, y: e.pageY});
+        }
+      }
+
+      md = function() {clicked = true;}
+      mu = function() {clicked = false;}
+
+      document.onmousemove = update;
+      document.onmousedown = md;
+      document.onmouseup = mu;
+
+    </script>
+  </head>
+  <body>
+    <div id="map_canvas"></div>
+    <canvas id="myCanvas" width="1200" height="800" style="position:absolute;top:0px;left:0px"></canvas>
+  </body>
+</html>
